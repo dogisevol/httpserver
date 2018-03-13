@@ -1,5 +1,12 @@
 # Http server
 
+## Description
+    It is a simple file browsing http server. Includes the following: <br/>
+    - Http server class <br/>
+    - Request and response interfaces as well as their default implementation <br/>
+    - Simple servlet class <br/>
+    - Main application that runs server <br/>
+
 ## Start server
 
 ### Using java  <br/>
