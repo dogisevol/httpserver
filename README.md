@@ -5,11 +5,10 @@
 
 Usage: [Options]  <br/>
 Options:  <br/>
--help <arg>     Display help information.<br/>  
+-help <arg>     Display help information.<br/>W
 -p <arg>        Port. 8080 will be used if not provided.<br/>
 -h <arg>        Host name. localhost will be used if not provided <br/> 
--d <arg>        Document Base(absolute or relative)  <br/>
-                Current folder will be used if not provided  <br/>
+-d <arg>        Document Base(absolute or relative). Current folder will be used if not provided  <br/>
 
 ## Tests
 IntegrationTest.java  <br/>
