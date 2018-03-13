@@ -1,37 +1,37 @@
 # Http server
 
 ## Description
-    It is a simple file browsing http server. Includes the following: <br/>
-    - Http server class <br/>
-    - Request and response interfaces as well as their default implementation <br/>
-    - Simple servlet class <br/>
-    - Main application that runs server <br/>
+    It is a simple file browsing http server. Includes the following:   
+    - Http server class   
+    - Request and response interfaces as well as their default implementation   
+    - Simple servlet class   
+    - Main application that runs server   
 
 ## Start server
 
-### Using java  <br/>
-   java -jar httpserver.jar <br/>
+### Using java    
+   java -jar httpserver.jar   
 
-    Usage: [Options]  <br/>
-    Options:  <br/>
-    -help <arg>     Display help information.<br/>W
-    -p <arg>        Port. 8080 will be used if not provided.<br/>
-    -h <arg>        Host name. localhost will be used if not provided <br/>
-    -d <arg>        Document Base(absolute or relative). Current folder will be used if not provided  <br/>
+    Usage: [Options]    
+    Options:    
+    -help <arg>     Display help information.  W
+    -p <arg>        Port. 8080 will be used if not provided.  
+    -h <arg>        Host name. localhost will be used if not provided   
+    -d <arg>        Document Base(absolute or relative). Current folder will be used if not provided    
 
 
-### Using maven  <br/>
-    mvn package  <br/>
-    mvn exec:java -Dexec.args="arg1 arg2 ..."   <br/>
+### Using maven    
+    mvn package    
+    mvn exec:java -Dexec.args="arg1 arg2 ..."     
 
-## Runing tests  <br/>
-     mvn test  <br/>
+## Runing tests    
+     mvn test    
 
 
 ## TODO  
-- Thread pooling  <br/>
-- Http session  <br/>
-- POST, PUT and others <br/> 
-- Compressed response  <br/>
-- Logging  <br/>
-- A lot of other stuff  <br/>
+- Thread pooling    
+- Http session    
+- POST, PUT and others    
+- Compressed response    
+- Logging    
+- A lot of other stuff    
