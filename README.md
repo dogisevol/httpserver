@@ -1,7 +1,7 @@
 # Http server
 
 ## Start
-   java -jar httpserver.jar -help <br/> 
+   java -jar httpserver.jar <br/> 
 
 Usage: [Options]  <br/>
 Options:  <br/>
@@ -16,13 +16,9 @@ IntegrationTest.java  <br/>
 RequestResponseTest.java  <br/>
 
 ## TODO  
-
-#### Thread pooling  
-#### Http session  
-#### POST, PUT and others  
-#### Compressed response  
-#### Logging  
-#### A lot of other stuff  
-
-
-
+- Thread pooling  <br/>
+- Http session  <br/>
+- POST, PUT and others <br/> 
+- Compressed response  <br/>
+- Logging  <br/>
+- A lot of other stuff  <br/>
