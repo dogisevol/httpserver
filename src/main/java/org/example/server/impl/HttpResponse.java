@@ -36,18 +36,26 @@ public class HttpResponse implements Response {
         content = Channels.newChannel(baos);
     }
 
-    private void writeLine(String line) throws IOException {
-        channel.write(encoder.encode(CharBuffer.wrap(line + "\r\n")));
+    private void writeLine(String line)  {
+        if (line != null) {
+            try {
+                channel.write(encoder.encode(CharBuffer.wrap(line + "\r\n")));
+            } catch (IOException e) {
+                //TODO logging
+            }
+        }
     }
 
     @Override
     public void print(String string) throws IOException {
-        contentLength += content.write(encoder.encode(CharBuffer.wrap(string)));
+        if (string != null)
+            contentLength += content.write(encoder.encode(CharBuffer.wrap(string)));
     }
 
     @Override
     public void println(String string) throws IOException {
-        contentLength += content.write(encoder.encode(CharBuffer.wrap(string + "\r\n")));
+        if (string != null)
+            contentLength += content.write(encoder.encode(CharBuffer.wrap(string + "\r\n")));
     }
 
     @Override
@@ -63,7 +71,9 @@ public class HttpResponse implements Response {
     @Override
     public void send() {
         try {
-            writeLine(this.getVersion() + " " + this.getResponseCode() + " " + this.getResponseReason());
+            writeLine(this.getVersion()
+                    + " " + this.getResponseCode()
+                    + " " + this.getResponseReason());
             headers.put("Date", new Date().toString());
             headers.put("Connection", "close");
             headers.put("Content-Length", Integer.toString(contentLength));
@@ -75,8 +85,7 @@ public class HttpResponse implements Response {
             while (wrap.hasRemaining())
                 channel.write(wrap);
         } catch (IOException e) {
-            e.printStackTrace();
-            //TODO
+            //TODO logging
         } finally {
             close();
         }

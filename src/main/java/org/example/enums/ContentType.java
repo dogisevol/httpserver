@@ -23,7 +23,11 @@ public enum ContentType {
     CSV("text/csv", "csv"),
     HTML("text/html; charset=utf-8", "htm", "html"),
     TEXT("text/plain", "txt", "text", "log"),
-    XML("text/xml", "xml");
+    XML("text/xml", "xml"),
+    XLS("application/vnd.ms-excel", "xls"),
+    XLSX("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "xlsx"),
+    DOC("application/msword", "doc"),
+    DOCX("application/vnd.openxmlformats-officedocument.wordprocessingml.document", "docx");
 
     private final String contentType;
     private final String[] fileExtension;

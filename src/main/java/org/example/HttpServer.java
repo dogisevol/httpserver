@@ -35,7 +35,7 @@ public class HttpServer implements Runnable {
         if (documentBase != null) {
             this.documentBase = documentBase;
         } else {
-            this.documentBase = Paths.get(ClassLoader.getSystemResource("docBase").toURI());
+            this.documentBase = Paths.get(ClassLoader.getSystemResource("").toURI());
         }
     }
 
@@ -43,6 +43,9 @@ public class HttpServer implements Runnable {
     @Override
     public final void run() {
         try {
+            if (!selector.isOpen()) {
+                return;
+            }
             selector.selectNow();
             Iterator<SelectionKey> i = selector.selectedKeys().iterator();
             while (i.hasNext()) {
@@ -58,7 +61,9 @@ public class HttpServer implements Runnable {
                         client.register(selector, SelectionKey.OP_READ);
                     } else if (selection.isReadable()) {
                         SocketChannel channel = (SocketChannel) selection.channel();
-                        new SimpleFileServlet(documentBase).process(new HttpRequest(channel, hostName, port), new HttpResponse(channel));
+                        new SimpleFileServlet(documentBase).process(
+                                new HttpRequest(channel, hostName, port),
+                                new HttpResponse(channel));
                     }
                 } catch (Exception e) {
                     System.err.println(e);
@@ -67,17 +72,17 @@ public class HttpServer implements Runnable {
                 }
             }
         } catch (Exception e) {
+            System.err.println("Server stopped");
             e.printStackTrace();
             shutdown();
-            throw new RuntimeException("Server crashed.", e);
         }
     }
 
 
     public void shutdown() {
         try {
-            selector.close();
             server.close();
+            selector.close();
         } catch (IOException e1) {
             System.err.println("Couldn't properly close server");
             e1.printStackTrace();
