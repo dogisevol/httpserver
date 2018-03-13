@@ -31,7 +31,9 @@ public class SimpleFileServlet implements Servlet {
     public void process(Request request, Response response) throws IOException {
         validateRequest(request, response);
         if (HttpStatus.OK.getCode() == response.getResponseCode()) {
-            if (request.getLocation() != null && request.getLocation().startsWith("/images/")) {
+            if (request.getLocation() != null
+                    && request.getLocation().startsWith("/images/")
+                    && !request.getLocation().endsWith("/images/")) {
                 readResource(request, response);
             } else {
                 getContent(request, response);
