@@ -2,7 +2,7 @@
 
 ## Start server
 
-- Using java  <br/>
+### Using java  <br/>
    java -jar httpserver.jar <br/>
 
     Usage: [Options]  <br/>
@@ -13,7 +13,7 @@
     -d <arg>        Document Base(absolute or relative). Current folder will be used if not provided  <br/>
 
 
-- Using maven  <br/>
+### Using maven  <br/>
     mvn package  <br/>
     mvn exec:java -Dexec.args="arg1 arg2 ..."   <br/>
 
