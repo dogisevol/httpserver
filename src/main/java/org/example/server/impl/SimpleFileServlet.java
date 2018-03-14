@@ -29,6 +29,7 @@ public class SimpleFileServlet implements Servlet {
 
     @Override
     public void process(Request request, Response response) throws IOException {
+        System.out.println("Location: " + request.getLocation());
         validateRequest(request, response);
         if (HttpStatus.OK.getCode() == response.getResponseCode()) {
             if (request.getLocation() != null
@@ -36,6 +37,11 @@ public class SimpleFileServlet implements Servlet {
                     && !request.getLocation().endsWith("/images/")) {
                 readResource(request, response);
             } else {
+                if (request.getLocation() != null
+                        && request.getLocation().startsWith("/admin/")
+                        && !request.getLocation().endsWith("/admin/")) {
+                    request.setLocation(request.getLocation() + ".json");
+                }
                 getContent(request, response);
             }
         }

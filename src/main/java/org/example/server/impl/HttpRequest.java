@@ -91,6 +91,10 @@ public class HttpRequest implements Request {
         setLocation(tokenizer.nextToken());
         if (getLocation() != null)
             setLocation(URLDecoder.decode(getLocation(), "UTF-8"));
+        if(location.contains("?")){
+            //TODO parse query params
+            location = location.substring(0, location.indexOf('?'));
+        }
         setVersion(tokenizer.nextToken());
         String[] lines = requestHead.split("\r\n");
         for (int i = 1; i < lines.length; i++) {

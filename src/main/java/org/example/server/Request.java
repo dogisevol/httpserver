@@ -13,6 +13,8 @@ public interface Request {
 
     String getLocation();
 
+    void setLocation(String location);
+
     String getHost();
 
     int getPort();
