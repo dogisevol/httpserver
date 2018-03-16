@@ -36,13 +36,6 @@ public class SimpleFileServlet implements Servlet {
                     && request.getLocation().startsWith("/images/")
                     && !request.getLocation().endsWith("/images/")) {
                 readResource(request, response);
-            } else {
-                if (request.getLocation() != null
-                        && request.getLocation().startsWith("/admin/")
-                        && !request.getLocation().endsWith("/admin/")) {
-                    request.setLocation(request.getLocation() + ".json");
-                }
-                getContent(request, response);
             }
         }
         response.send();
