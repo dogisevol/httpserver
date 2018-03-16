@@ -1,0 +1,89 @@
+{
+	"attributes": [
+		{
+			"attribute_type": "STRING",
+			"name": "FirstName",
+			"metadata": [
+				{
+					"name": "string",
+					"value": "string"
+				}
+			],
+			"definition": {
+				"source": "ATTRIBUTE",
+				"pedigree": "SELF_ASSERTED",
+				"signed": false,
+				"forumla": "string"
+			},
+			"value": "Alex"
+		},
+		{
+			"attribute_type": "STRING",
+			"name": "LastName",
+			"metadata": [
+				{
+					"name": "string",
+					"value": "string"
+				}
+			],
+			"definition": {
+				"source": "ATTRIBUTE",
+				"pedigree": "SELF_ASSERTED",
+				"signed": false,
+				"forumla": "string"
+			},
+			"value": "Avekau"
+		},
+		{
+			"attribute_type": "DATE",
+			"name": "DateOfBirth",
+			"metadata": [
+				{
+					"name": "string",
+					"value": "string"
+				}
+			],
+			"definition": {
+				"source": "ATTRIBUTE",
+				"pedigree": "SELF_ASSERTED",
+				"signed": false,
+				"forumla": "string"
+			},
+			"date_value": {
+				"value": "1978-12-18"
+			}
+		},
+		{
+			"attribute_type": "ADDRESS",
+			"name": "Address",
+			"metadata": [
+				{
+					"name": "string",
+					"value": "string"
+				}
+			],
+			"definition": {
+				"source": "ATTRIBUTE",
+				"pedigree": "SELF_ASSERTED",
+				"signed": false,
+				"forumla": "string"
+			},
+			"address_value": {
+				"value": {
+					"address_start_date": "string",
+					"address_end_date": "string",
+					"address_line_1": "7",
+					"address_line_2": "Taring Pde",
+					"address_line_3": "",
+					"lot_number": "string",
+					"location": "Indooroopilly",
+					"state_code": "QLD",
+					"postcode": "4068",
+					"country_code": "string",
+					"latitude": 0,
+					"longitude": 0
+				}
+			}
+		}
+	]
+}
