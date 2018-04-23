@@ -39,7 +39,7 @@ public class HttpRequest implements Request {
 
     public void parse() throws IOException {
         ByteBuffer buffer = parseRequest(getBuffer());
-        if (getRequestSize() < REQUEST_SIZE_ALLOWED && getRequestSize() > -1) {
+        if (getRequestSize() <= REQUEST_SIZE_ALLOWED && getRequestSize() > -1) {
             buffer.flip();
             readHeaders(buffer);
         }
@@ -95,11 +95,15 @@ public class HttpRequest implements Request {
             //TODO parse query params
             location = location.substring(0, location.indexOf('?'));
         }
-        setVersion(tokenizer.nextToken());
-        String[] lines = requestHead.split("\r\n");
-        for (int i = 1; i < lines.length; i++) {
-            String[] keyVal = lines[i].split(":", 2);
-            getHeaders().put(keyVal[0].trim().toUpperCase(), keyVal[1].trim());
+        try {
+            setVersion(tokenizer.nextToken());
+            String[] lines = requestHead.split("\r\n");
+            for (int i = 1; i < lines.length; i++) {
+                String[] keyVal = lines[i].split(":", 2);
+                getHeaders().put(keyVal[0].trim().toUpperCase(), keyVal[1].trim());
+            }
+        }catch (Exception e){
+
         }
     }
 

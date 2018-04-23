@@ -36,6 +36,21 @@ public class SimpleFileServlet implements Servlet {
                     && request.getLocation().startsWith("/images/")
                     && !request.getLocation().endsWith("/images/")) {
                 readResource(request, response);
+            } else {
+                if(request.getLocation()  != null  && request.getLocation().startsWith("/customer_identity/")){
+                    request.setLocation("/customer_identity.json");
+                }else if (request.getLocation() != null
+                        && request.getLocation().startsWith("/admin/")
+                        && !request.getLocation().endsWith("/admin/")) {
+                    if(request.getLocation().contains("accounts")){
+                        request.setLocation("/admin/account/attribute_release.json");
+                    }else if(request.getLocation().contains("verifications")){
+                        request.setLocation("/admin/eoi/greenid/verifications.json");
+                    }
+                    else
+                    request.setLocation(request.getLocation().substring(0, request.getLocation().length()-1) + ".json");
+                }
+                getContent(request, response);
             }
         }
         response.send();
@@ -46,7 +61,7 @@ public class SimpleFileServlet implements Servlet {
         if (!HttpMethod.GET.toString().equals(request.getHttpMethod())) {
             //response.setResponseStatus(HttpStatus.METHOD_NOT_ALLOWED);
         } else if (request.getRequestSize() >= Request.REQUEST_SIZE_ALLOWED) {
-            response.setResponseStatus(HttpStatus.REQUEST_URI_TOO_LARGE);
+           // response.setResponseStatus(HttpStatus.REQUEST_URI_TOO_LARGE);
         } else if (!("HTTP/1.0".equals(request.getVersion()) || "HTTP/1.1".equals(request.getVersion()))) {
             response.setResponseStatus(HttpStatus.BAD_REQUEST);
         } else if (location.contains("/..") ||
